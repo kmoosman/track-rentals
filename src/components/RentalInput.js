@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, Badge, Form } from "react-bootstrap";
-
-
+import { Button, Form, Col } from "react-bootstrap";
 
 class RentalInput extends Component {
 
@@ -12,30 +10,34 @@ class RentalInput extends Component {
     return(
         <Form>
             <Form.Group controlId="formEventName">
-                <Form.Label>Particpant</Form.Label>
-                <Form.Control onChange={(event) => console.log("testing")} value="" type="name" placeholder="enter name" />
+            <Form.Row>
+                <Col style={lableCol}>
+                <Form.Control onChange={(event) => console.log("testing")} value="" type="name" placeholder="Enter a particpant" /> 
+                </Col>
+                <Col style={buttonCol}>
+                <Button variant="primary" style={buttonStyle} onClick={ () => console.log('you clicked to return') }>Rent</Button>
+                </Col>
+            </Form.Row>
             </Form.Group>
-            
-           
+
         </Form>   
     );
   }
 };
 
 const buttonStyle = {
-    width: '45%',
-    margin: '5px',
+    float: 'right',
+    width: '100%'
+    
   };
 
-const eventCard = {
-    width: '22%',
-    margin: '20px'
+const buttonCol = {
+    flexGrow: '1',
 }
 
-const badge = {
-    float: 'right'
+const lableCol = {
+    flexGrow: '3'
 }
-
 
 
 export default RentalInput;

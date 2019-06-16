@@ -12,7 +12,7 @@ class Event extends Component {
     let input
 
     if (!rented) {
-        input = <RentalInput />;
+        input = <RentalInput /> ;
       } else {
         input = <RentalName />;
       }
@@ -27,8 +27,6 @@ class Event extends Component {
             <Card.Body   style={this.props.background}>
             {input}
             </Card.Body>
-            <Button variant="outline-primary"  type="submit" style={buttonStyle} onClick={ () => console.log('you clicked to checkout') }>Checkout</Button>
-            <Button variant="outline-secondary" style={buttonStyle} onClick={ () => console.log('you clicked to return') }>Return</Button>
         </Card>
                 
     );
@@ -41,7 +39,7 @@ const buttonStyle = {
   };
 
 const eventCard = {
-    width: '22%',
+    width: '27%',
     margin: '20px'
 }
 
