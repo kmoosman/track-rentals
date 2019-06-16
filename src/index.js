@@ -7,7 +7,12 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import manageRentals from './reducers/manageRentals';
 
-let store = createStore(manageRentals);
+// let store = createStore(manageRentals);
+
+const store = createStore(
+  manageRentals,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 
 ReactDOM.render(

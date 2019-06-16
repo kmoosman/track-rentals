@@ -1,25 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Navbar } from "react-bootstrap";
 import './App.css';
 import CreateEvent from './components/CreateEvent';
 import Event from './components/Event';
 import TransponderContainer from './components/TransponderContainer';
 
-function App() {
-  return (
-    <div className="App" >
-      <header>
-      <Navbar>
-        <a href="/">Nav Bar Links</a>
-      </Navbar>
-        <CreateEvent /> 
-        <Event />
-        <TransponderContainer number={1} background={available} status={"Available"} rented={false}/>
-        <TransponderContainer number={2} background={unavailable} status={"Rented"} rented={true}/>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+
+  renderTransponders = () => this.props.transponders.map((transponder, id) => <TransponderContainer key={id} number={transponder.number}  rented={transponder.rented} transponder={transponder} />)
+
+  render() {
+    return (
+      <div className="App" >
+        <header>
+        <Navbar>
+          <a href="/">Nav Bar Links</a>
+        </Navbar>
+          <CreateEvent /> 
+          <Event />
+          {this.renderTransponders()}
+        </header>
+      </div>
+    );
+  }
+  
 }
 
 const available = {
@@ -31,4 +37,12 @@ const unavailable = {
   backgroundColor: '#ffd3d3',
   float: 'right'
 }
-export default App;
+
+
+const mapStateToProps = (state) => {
+  return { transponders: state.transponders };
+};
+
+
+ export default connect(mapStateToProps)(App);
+
