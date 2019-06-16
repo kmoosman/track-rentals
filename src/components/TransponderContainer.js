@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import { Card, Button, Badge, Form } from "react-bootstrap";
+import RentalInput from "./RentalInput"
+import RentalName from "./RentalName"
 
 class Event extends Component {
-
-    
     
   render(props) {
 
-    const badgeColor = (this.props.status === "Available") ? 'success' : 'danger'
+    const badgeColor = (this.props.rented === false) ? 'success' : 'danger'
+    const rented = this.props.rented
+    let input
+
+    if (!rented) {
+        input = <RentalInput />;
+      } else {
+        input = <RentalName />;
+      }
     
     return(
         <Card style={eventCard}>
@@ -17,16 +25,10 @@ class Event extends Component {
                 </Badge>
             </Card.Header>
             <Card.Body   style={this.props.background}>
-            <Form>
-                <Form.Group controlId="formEventName">
-                    <Form.Label>Particpant</Form.Label>
-                    <Form.Control onChange={(event) => console.log("testing")} value="" type="name" placeholder="enter name" />
-                </Form.Group>
-                
-                <Button variant="outline-primary"  type="submit" style={buttonStyle} onClick={ () => console.log('you clicked to checkout') }>Checkout</Button>
-                <Button variant="outline-secondary" style={buttonStyle} onClick={ () => console.log('you clicked to return') }>Return</Button>
-                </Form>
+            {input}
             </Card.Body>
+            <Button variant="outline-primary"  type="submit" style={buttonStyle} onClick={ () => console.log('you clicked to checkout') }>Checkout</Button>
+            <Button variant="outline-secondary" style={buttonStyle} onClick={ () => console.log('you clicked to return') }>Return</Button>
         </Card>
                 
     );

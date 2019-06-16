@@ -4,7 +4,7 @@ import { Navbar } from "react-bootstrap";
 import './App.css';
 import CreateEvent from './components/CreateEvent';
 import Event from './components/Event';
-import Transponder from './components/Transponder';
+import TransponderContainer from './components/TransponderContainer';
 
 function App() {
   return (
@@ -15,8 +15,8 @@ function App() {
       </Navbar>
         <CreateEvent /> 
         <Event />
-        <Transponder number={1} background={available} status={"Available"}/>
-        <Transponder number={2} background={unavailable} status={"Rented"}/>
+        <TransponderContainer number={1} background={available} status={"Available"} rented={false}/>
+        <TransponderContainer number={2} background={unavailable} status={"Rented"} rented={true}/>
       </header>
     </div>
   );
