@@ -3,8 +3,6 @@ import { Button, Form, Col } from "react-bootstrap";
 
 class RentalInput extends Component {
 
-    
-    
   render(props) {
     
     return(

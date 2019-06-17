@@ -1,26 +1,41 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Navbar } from "react-bootstrap";
+import { Carousel, Button } from "react-bootstrap";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Container } from 'semantic-ui-react';
 import './App.css';
+import Nav from './components/Nav';
 import CreateEvent from './components/CreateEvent';
-import Event from './components/Event';
-import TransponderContainer from './components/TransponderContainer';
+import Home from './components/Home';
+// import TransponderContainer from './components/TransponderContainer';
+import EventDetails from './components/EventDetails';
+import EventsContainer from './components/EventsContainer';
 
 
 class App extends Component {
-
-  renderTransponders = () => this.props.transponders.map((transponder, id) => <TransponderContainer key={id} number={transponder.number}  rented={transponder.rented} transponder={transponder} />)
-
+  // renderTransponders = () => this.props.transponders.map((transponder, id) => <TransponderContainer key={id} number={transponder.number}  rented={transponder.rented} transponder={transponder} />)
+  
   render() {
     return (
-      <div className="App" >
+      <div  >
         <header>
-        <Navbar>
-          <a href="/">Nav Bar Links</a>
-        </Navbar>
-          <CreateEvent /> 
-          <Event />
-          {this.renderTransponders()}
+        
+          {/* <a href="/">Nav Bar Links</a> */}
+          {/* <Link to="/events/new">Create an event</Link> */}
+
+        <Router>
+        <Nav />
+        <Container>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/events' component={EventsContainer} />
+            <Route exact path='/events/new' component={CreateEvent} />
+  
+          
+          </Switch>
+          </Container>
+        </Router>
+
         </header>
       </div>
     );
@@ -36,6 +51,37 @@ const available = {
 const unavailable = {
   backgroundColor: '#ffd3d3',
   float: 'right'
+}
+
+const title = {
+  color: '#9842f4',
+  fontSize: '50px'
+
+}
+
+const subTitle = {
+  color: '#4092E7',
+  marginTop: '20px'
+}
+
+const header = {
+  textAlign: 'center'
+}
+
+const logo = {
+  height: '250px',
+  width: '300px'
+}
+
+const body = {
+  marginTop: '40px',
+  textAlign: 'center'
+}
+
+const cta = {
+  marginTop: '30px',
+  width: '150px',
+  height: '50px'
 }
 
 

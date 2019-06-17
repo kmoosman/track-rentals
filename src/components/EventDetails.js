@@ -1,0 +1,51 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Card, Button } from "react-bootstrap";
+// import TransponderContainer from './TransponderContainer';
+
+class EventDetails extends Component {
+    // renderTransponders = () => this.props.transponders.map((transponder, id) => <TransponderContainer key={id} number={transponder.number}  rented={transponder.rented} transponder={transponder} />)
+
+  render(props) {
+
+    
+    return(
+    <div style={eventCard}>
+        <Card >
+            <Card.Header as="h5">{this.props.name}</Card.Header>
+            <Card.Body>
+                <Card.Title>April 2nd, 2019</Card.Title>
+                <Card.Text>
+               <div style={buttonStyle}>
+                Austin, Texas
+               </div>
+               <div style={buttonStyle}>
+                <Button variant="danger" onClick={ () => console.log('you clicked to return') }>Select</Button>
+               </div>
+                </Card.Text>
+               
+            </Card.Body>
+        </Card>
+    </div>
+                
+    );
+  }
+};
+
+const buttonStyle = {
+    textAlign: 'center',
+    marginTop: '10px'
+
+  };
+
+const eventCard = {
+    margin: '20px',
+    display: 'inline-flex'
+}
+
+const mapStateToProps = (state) => {
+    return { transponders: state.transponders };
+  };
+  
+  
+   export default connect(mapStateToProps)(EventDetails);

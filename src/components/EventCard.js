@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Button } from "react-bootstrap";
 
-class Event extends Component {
+class EventCard extends Component {
 
   render() {
     return(
@@ -29,4 +29,4 @@ const eventCard = {
     margin: '20px'
 }
 
-export default Event;
+export default EventCard;
