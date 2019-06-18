@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 // import TransponderContainer from './TransponderContainer';
 
 class EventDetails extends Component {
-    // renderTransponders = () => this.props.transponders.map((transponder, id) => <TransponderContainer key={id} number={transponder.number}  rented={transponder.rented} transponder={transponder} />)
+ 
 
   render(props) {
 
