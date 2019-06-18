@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Carousel, Button } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
   
@@ -23,7 +24,10 @@ class Home extends Component {
                 <img style={logo} src={require('../images/BellSport2011.jpg')} alt={"helmet"} />
               </Carousel.Item>
               </Carousel>
-              <Button style={cta} variant="danger" onClick={ () => console.log('you clicked to return') }>Rent Now</Button>
+              <Link to={`/events`} >
+                 <Button style={cta} variant="danger" onClick={ () => console.log('you clicked to return') }>Rent Now</Button>
+              </Link>
+              
           </div>
         </header>
       </div>

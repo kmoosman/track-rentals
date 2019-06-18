@@ -9,7 +9,7 @@ import EventDetails from './EventDetails';
 
 class EventsContainer extends Component {
   // renderTransponders = () => this.props.transponders.map((transponder, id) => <TransponderContainer key={id} number={transponder.number}  rented={transponder.rented} transponder={transponder} />)
-  renderEvents = () => this.props.events.map((event, id) => <EventDetails key={id} name={event.name}  date={event.date} location={event.location} />)
+  renderEvents = () => this.props.events.map((event, id) => <EventDetails id={id + 1} name={event.name}  date={event.date} location={event.location} />)
   debugger
   render() {
     return (

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, Button } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 // import TransponderContainer from './TransponderContainer';
 
 class EventDetails extends Component {
@@ -14,13 +15,15 @@ class EventDetails extends Component {
         <Card >
             <Card.Header as="h5">{this.props.name}</Card.Header>
             <Card.Body>
-                <Card.Title>April 2nd, 2019</Card.Title>
+                <Card.Title>{this.props.date}</Card.Title>
                 <Card.Text>
                <div style={buttonStyle}>
-                Austin, Texas
+               {this.props.location}
                </div>
                <div style={buttonStyle}>
-                <Button variant="danger" onClick={ () => console.log('you clicked to return') }>Select</Button>
+                <Link to={`/events/${this.props.id}`} >
+                 <Button variant="danger">Rentals</Button>
+                </Link>
                </div>
                 </Card.Text>
                

@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { Card, Button } from "react-bootstrap";
+import { connect } from 'react-redux';
 
 class EventCard extends Component {
 
+
   render() {
+    const eventID = this.props.match.params.key - 1
+    const event = this.props.events[eventID]
     return(
         <Card style={eventCard}>
-            <Card.Header as="h5">USGP Round 1 </Card.Header>
+            <Card.Header as="h5">{event.name}</Card.Header>
             <Card.Body>
-                <Card.Title>April 2nd, 2019</Card.Title>
+                <Card.Title>{event.date}</Card.Title>
                 <Card.Text>
-                Austin, Texas
+                {event.location}
                 </Card.Text>
                 <Button variant="outline-danger" style={buttonStyle} onClick={ () => console.log('you clicked delete') }>Delete</Button>
             </Card.Body>
@@ -29,4 +33,10 @@ const eventCard = {
     margin: '20px'
 }
 
-export default EventCard;
+const mapStateToProps = (state) => {
+    return { events: state.events };
+  };
+  
+  
+export default connect(mapStateToProps)(EventCard);
+  
