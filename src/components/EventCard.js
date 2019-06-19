@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import { Card } from "react-bootstrap";
 import { connect } from 'react-redux';
 import TransponderContainer from './TransponderContainer';
+import Transponder from './Transponder';
 
 class EventCard extends Component {
-    renderTransponders = () => this.props.transponders.map((transponder, id) => <TransponderContainer key={id} number={transponder.number}  rented={transponder.rented} transponder={transponder} />)
+    
 
   render() {
     const eventID = this.props.match.params.key - 1
     const event = this.props.events[eventID]
     
     return(
+        
         <Card style={eventCard}>
             <Card.Header as="h5">{event.name}</Card.Header>
             <Card.Body>
@@ -18,7 +20,10 @@ class EventCard extends Component {
                 <Card.Text>
                 
                 </Card.Text>
-                {this.renderTransponders()}
+                {/* {event.transponders[0].name} */}
+                {event.transponders.map((transponder, id) => <TransponderContainer key={id} number={transponder.number}  rented={transponder.rented} transponder={transponder} />)}
+                {/* <Transponder event={event}/> */}
+                {/* {this.renderTransponders()} */}
                
             </Card.Body>
         </Card>
@@ -38,8 +43,7 @@ const eventCard = {
 }
 
 const mapStateToProps = (state) => {
-    return { events: state.events,
-             transponders: state.transponders };
+    return { events: state.events};
   };
   
   

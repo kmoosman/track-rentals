@@ -82,7 +82,7 @@ class App extends Component {
 
 
 const mapStateToProps = (state) => {
-  return { transponders: state.transponders };
+  return { transponders: state.events.transponders };
 };
 
 
