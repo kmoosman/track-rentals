@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, Badge, Form } from "react-bootstrap";
+import { Card, Badge } from "react-bootstrap";
 import RentalInput from "./RentalInput"
 import RentalName from "./RentalName"
 
@@ -39,10 +39,10 @@ class Event extends Component {
   }
 };
 
-const buttonStyle = {
-    width: '45%',
-    margin: '5px',
-  };
+// const buttonStyle = {
+//     width: '45%',
+//     margin: '5px',
+//   };
 
 const eventCard = {
     width: '27%',

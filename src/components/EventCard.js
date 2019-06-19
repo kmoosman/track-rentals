@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { connect } from 'react-redux';
 import TransponderContainer from './TransponderContainer';
 
@@ -27,9 +27,9 @@ class EventCard extends Component {
   }
 };
 
-const buttonStyle = {
-    width: '200px',
-  };
+// const buttonStyle = {
+//     width: '200px',
+//   };
 
 const eventCard = {
     marginTop: '20px',

@@ -25,7 +25,7 @@ class Home extends Component {
               </Carousel.Item>
               </Carousel>
               <Link to={`/events`} >
-                 <Button style={cta} variant="danger" onClick={ () => console.log('you clicked to return') }>Rent Now</Button>
+                 <Button style={cta} variant="primary" onClick={ () => console.log('you clicked to return') }>Rent Now</Button>
               </Link>
               
           </div>
@@ -38,11 +38,11 @@ class Home extends Component {
 
 
 
-const title = {
-  color: '#9842f4',
-  fontSize: '50px'
+// const title = {
+//   color: '#307CF6',
+//   fontSize: '50px'
 
-}
+// }
 
 const subTitle = {
   color: '#4092E7',

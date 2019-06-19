@@ -8,8 +8,23 @@ export default function manageRentals(
   },
   action
 ) {
-  
+  switch (action.type) {
+    case 'ADD_EVENT':
+      var options = { year: 'numeric', month: 'long', day: 'numeric' };
+      var dateString = action.payload.date; 
+      var dateObject = new Date(dateString);
+
+      const event = {
+        name: action.payload.name,
+        date: dateObject.toLocaleDateString("en-US", options),
+        location: action.payload.location
+      }
+			return { ...state, events: [...state.events, event]}
+    default:
       return state;
+  }
+  
+      // return state;
   
 }
 

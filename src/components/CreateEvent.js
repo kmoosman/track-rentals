@@ -7,46 +7,57 @@ class CreateEvent extends Component {
   constructor() {
     super();
     this.state = {
-      name: '',
-      date: '',
-      location: '',
+      formValues: {},
     };
   }
 
-  handleSubmit = event => {
-    event.preventDefault();
-    // this.props.addTodo(this.state)
-    // this.setState({text: ''})
-  }
+
+  // handleChange(event) {
+  //     console.log("you have added an event")
+  //   this.setState({
+  //     name: event.target.value,
+  //     date: event.target.value,
+  //     location: event.target.value,
+  //   });
+  // }
 
   handleChange(event) {
-      console.log("this is working")
-    this.setState({
-      name: event.target.value,
-      date: event.target.value,
-      location: event.target.value,
-    });
+    event.preventDefault();
+    let formValues = this.state.formValues;
+    let name = event.target.name;
+    let value = event.target.value;
+
+    formValues[name] = value;
+
+    this.setState({formValues})
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
+    console.log(this.state.formValues);
+    console.log("you have submitted this event, congrats - you're winner")
+    this.props.addEvent(this.state.formValues)
   }
 
   render() {
     return(
       <div>
         <h1>Create New Event </h1>
-        <Form className="Form">
+        <Form className="Form" onSubmit={e => this.handleSubmit(e)}>
         <Form.Group controlId="formEventName">
             <Form.Label>Event Name</Form.Label>
-            <Form.Control onChange={(event) => this.handleChange(event)} value={this.state.name} type="name" placeholder="USGP Round 1" />
+            <Form.Control onChange={(event) => this.handleChange(event)} name="name" value={this.state.name} type="name" placeholder="USGP Round 1" />
         </Form.Group>
         <Form.Group controlId="formEventDate">
             <Form.Label>Date</Form.Label>
-            <Form.Control onChange={(event) => this.handleChange(event)} value={this.state.date} type="date" placeholder="date" />
+            <Form.Control onChange={(event) => this.handleChange(event)} name="date" value={this.state.date} type="date" placeholder="date" />
         </Form.Group>
         <Form.Group controlId="formEventLocation">
             <Form.Label>Location</Form.Label>
-            <Form.Control onChange={(event) => this.handleChange(event)} value={this.state.location} type="locatino" placeholder="Austin, TX" />
+            <Form.Control onChange={(event) => this.handleChange(event)} name="location" value={this.state.location} type="text" placeholder="Austin, TX" />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" >
             Submit
         </Button>
         </Form>

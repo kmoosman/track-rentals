@@ -22,7 +22,7 @@ class EventDetails extends Component {
                </div>
                <div style={buttonStyle}>
                 <Link to={`/events/${this.props.id}`} >
-                 <Button variant="danger">Rentals</Button>
+                 <Button variant="primary">Rentals</Button>
                 </Link>
                </div>
                 </Card.Text>

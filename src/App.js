@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Carousel, Button } from "react-bootstrap";
+// import { Carousel, Button } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import './App.css';
 import Nav from './components/Nav';
 import CreateEvent from './components/CreateEvent';
 import Home from './components/Home';
-// import TransponderContainer from './components/TransponderContainer';
-import EventDetails from './components/EventDetails';
 import EventsContainer from './components/EventsContainer';
 import EventCard from './components/EventCard';
 
@@ -20,10 +18,6 @@ class App extends Component {
     return (
       <div  >
         <header>
-        
-          {/* <a href="/">Nav Bar Links</a> */}
-          {/* <Link to="/events/new">Create an event</Link> */}
-
         <Router>
         <Nav />
         <Container>
@@ -45,46 +39,46 @@ class App extends Component {
   
 }
 
-const available = {
-  backgroundColor: '#efffd3',
-  float: 'right'
-}
+// const available = {
+//   backgroundColor: '#efffd3',
+//   float: 'right'
+// }
 
-const unavailable = {
-  backgroundColor: '#ffd3d3',
-  float: 'right'
-}
+// const unavailable = {
+//   backgroundColor: '#ffd3d3',
+//   float: 'right'
+// }
 
-const title = {
-  color: '#9842f4',
-  fontSize: '50px'
+// const title = {
+//   color: '#9842f4',
+//   fontSize: '50px'
 
-}
+// }
 
-const subTitle = {
-  color: '#4092E7',
-  marginTop: '20px'
-}
+// const subTitle = {
+//   color: '#4092E7',
+//   marginTop: '20px'
+// }
 
-const header = {
-  textAlign: 'center'
-}
+// const header = {
+//   textAlign: 'center'
+// }
 
-const logo = {
-  height: '250px',
-  width: '300px'
-}
+// const logo = {
+//   height: '250px',
+//   width: '300px'
+// }
 
-const body = {
-  marginTop: '40px',
-  textAlign: 'center'
-}
+// const body = {
+//   marginTop: '40px',
+//   textAlign: 'center'
+// }
 
-const cta = {
-  marginTop: '30px',
-  width: '150px',
-  height: '50px'
-}
+// const cta = {
+//   marginTop: '30px',
+//   width: '150px',
+//   height: '50px'
+// }
 
 
 const mapStateToProps = (state) => {
