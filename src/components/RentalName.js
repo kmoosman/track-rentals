@@ -14,7 +14,7 @@ class RentalName extends Component {
 
         return (
             <div style={row}>
-            <p style={rowItem1}>John Williams </p>
+            <p style={rowItem1}>{this.props.transponder.rented_by}</p>
             <Button style={rowItem2} variant="outline-secondary" onClick={ (event) => this.returnTransponder(event) }>Return</Button>
             </div>
         )

@@ -9,18 +9,18 @@ class TransponderContainer extends Component {
   render(props) {
 
     const badgeColor = (this.props.rented === false) ? 'success' : 'danger'
-    console.log("i'm logging" + badgeColor)
+    
     const rented = this.props.rented
     let input
     let status
     let styling
 
     if (!rented) {
-        input = <RentalInput transponder={this.props} returnTransponder={this.props.returnTransponder} /> ;
+        input = <RentalInput transponder={this.props} rentTransponder={this.props.rentTransponder} /> ;
         status = "Available"
         styling = success
       } else {
-        input = <RentalName  transponder={this.props} returnTransponder={this.props.returnTransponder}/>;
+        input = <RentalName  transponder={this.props} returnTransponder={this.props.returnTransponder} />;
         status = "Rented"
         styling = danger
       }
@@ -64,6 +64,7 @@ const badge = {
 
 const mapDispatchToProps = dispatch => ({
     returnTransponder: transponder => dispatch({ type: 'RETURN_TRANSPONDER', transponder: transponder }),
+    rentTransponder: transponder => dispatch({ type: 'RENT_TRANSPONDER', transponder: transponder }),
 })
 
 export default connect(null, mapDispatchToProps)(TransponderContainer);
