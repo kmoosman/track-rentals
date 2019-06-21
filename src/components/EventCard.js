@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Card } from "react-bootstrap";
 import { connect } from 'react-redux';
 import TransponderContainer from './TransponderContainer';
-import Transponder from './Transponder';
 
 class EventCard extends Component {
     
@@ -20,10 +19,8 @@ class EventCard extends Component {
                 <Card.Text>
                 
                 </Card.Text>
-                {/* {event.transponders[0].name} */}
-                {event.transponders.map((transponder, id) => <TransponderContainer key={id} number={transponder.number}  rented={transponder.rented} transponder={transponder} />)}
-                {/* <Transponder event={event}/> */}
-                {/* {this.renderTransponders()} */}
+                {/* {console.log(event.transponders)} */}
+                {event.transponders.map((transponder, id) => <TransponderContainer key={id} number={transponder.number} eventID={eventID} rented={transponder.rented} rented_by={transponder.rented_by} event={event} />)}
                
             </Card.Body>
         </Card>

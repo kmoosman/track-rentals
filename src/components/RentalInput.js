@@ -13,7 +13,7 @@ class RentalInput extends Component {
                 <Form.Control onChange={(event) => console.log("testing")} value="" type="name" placeholder="Enter a particpant" /> 
                 </Col>
                 <Col style={buttonCol}>
-                <Button variant="primary" style={buttonStyle} onClick={ () => console.log('you clicked to return') }>Rent</Button>
+                <Button variant="primary" style={buttonStyle} onClick={ () => console.log(this.props) }>Rent</Button>
                 </Col>
             </Form.Row>
             </Form.Group>

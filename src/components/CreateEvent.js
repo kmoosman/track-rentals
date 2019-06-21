@@ -67,7 +67,7 @@ class CreateEvent extends Component {
 };
 
 const mapDispatchToProps = dispatch => ({
-  addEvent: formData => dispatch({ type: 'ADD_EVENT', payload: formData })
+  addEvent: formData => dispatch({ type: 'ADD_EVENT', newEvent: formData }),
 })
 
 export default connect(null, mapDispatchToProps)(CreateEvent);

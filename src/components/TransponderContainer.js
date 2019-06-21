@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import { Card, Badge } from "react-bootstrap";
 import RentalInput from "./RentalInput"
 import RentalName from "./RentalName"
 
-class Event extends Component {
+class TransponderContainer extends Component {
     
   render(props) {
 
@@ -15,11 +16,11 @@ class Event extends Component {
     let styling
 
     if (!rented) {
-        input = <RentalInput /> ;
+        input = <RentalInput transponder={this.props} returnTransponder={this.props.returnTransponder} /> ;
         status = "Available"
         styling = success
       } else {
-        input = <RentalName />;
+        input = <RentalName  transponder={this.props} returnTransponder={this.props.returnTransponder}/>;
         status = "Rented"
         styling = danger
       }
@@ -61,6 +62,8 @@ const badge = {
     float: 'right'
 }
 
+const mapDispatchToProps = dispatch => ({
+    returnTransponder: transponder => dispatch({ type: 'RETURN_TRANSPONDER', transponder: transponder }),
+})
 
-
-export default Event;
+export default connect(null, mapDispatchToProps)(TransponderContainer);

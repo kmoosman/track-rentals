@@ -49,6 +49,7 @@ const eventCard = {
 const mapStateToProps = (state) => {
     return { transponders: state.transponders };
   };
-  
+
+
   
    export default connect(mapStateToProps)(EventDetails);
