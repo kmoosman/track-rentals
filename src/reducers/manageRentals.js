@@ -35,42 +35,43 @@ export default function manageRentals(
         rented_by: action.transponder.rented_by
       }
 
-      function updateObjectInArray(array, action) {
+      function updateTransponderArray(array, action) {
         return array.map((item, index) => {
-          if (index !== action.transponder.number ) {
-            // This isn't the item we care about - keep it as-is
-            console.log("this is not the item you're looking for")
+          if (index !== action.transponder.number - 1 ) {
             return item
           } else {
-            console.log("this is the item you're looking for")
-            console.log(action.transponder.number - 1)
             return {
-              number: 2, rented: true, rented_by: "",
+              number: action.transponder.number, rented: false, rented_by: "",
               ...action.item
             }
           }
-          
-          // Otherwise, this is the one we want - return an updated value
-          
         })
       }
-      const updatedArray = updateObjectInArray(state.events[action.transponder.eventID].transponders, action)
-      console.log(typeof updatedArray)
-      
-      
-    return { ...state, 
-      events: {
-      ...state.events,
-      [action.transponder.eventID]: 
-        {
-          ...state.events[action.transponder.eventID],
-          transponders: updatedArray
-          }}
-        
-      
-    }
 
-    return state
+          function updateEventsArray(array, action) {
+          return array.map((item, index) => {
+            if (index !== action.transponder.eventID) {
+              // This isn't the item we care about - keep it as-is
+              console.log(item )
+              return item
+            } else {
+              return {...item,
+                     transponders: updatedArray}
+            }
+      
+        })
+      }   
+     
+        const updatedArray = updateTransponderArray(state.events[action.transponder.eventID].transponders, action)
+        const updateEvents = updateEventsArray(state.events, action)
+        console.log(updateEvents)
+   
+    return { ...state, 
+      events:
+      updateEvents,
+        }
+
+     //enter new case here   
     default:
       return state;
   }
