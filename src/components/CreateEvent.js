@@ -11,16 +11,6 @@ class CreateEvent extends Component {
     };
   }
 
-
-  // handleChange(event) {
-  //     console.log("you have added an event")
-  //   this.setState({
-  //     name: event.target.value,
-  //     date: event.target.value,
-  //     location: event.target.value,
-  //   });
-  // }
-
   handleChange(event) {
     event.preventDefault();
     let formValues = this.state.formValues;
@@ -30,13 +20,18 @@ class CreateEvent extends Component {
     formValues[name] = value;
 
     this.setState({formValues})
+
   }
 
-  handleSubmit(event) {
+  handleSubmit(event){
     event.preventDefault()
     console.log(this.state.formValues);
     console.log("you have submitted this event, congrats - you're winner")
     this.props.addEvent(this.state.formValues)
+    let path = `/events`;
+    this.props.history.push(path);
+ 
+    // return  <Redirect to='/events' />
   }
 
   render() {

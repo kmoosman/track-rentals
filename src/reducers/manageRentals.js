@@ -12,6 +12,7 @@ export default function manageRentals(
   action
 ) {
   switch (action.type) {
+    
     case 'ADD_EVENT':
       var options = { year: 'numeric', month: 'long', day: 'numeric' };
       var dateString = action.newEvent.date; 

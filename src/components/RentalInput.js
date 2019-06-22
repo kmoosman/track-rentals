@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
 import { Button, Form, Col } from "react-bootstrap";
 
 class RentalInput extends Component {
@@ -14,7 +13,7 @@ class RentalInput extends Component {
         };
       }
 
-    rentTransponder(event) {
+    rentTransponder = (event) => {
         event.preventDefault()
 
         this.props.rentTransponder(this.state)
