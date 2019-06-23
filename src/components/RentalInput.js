@@ -13,7 +13,7 @@ class RentalInput extends Component {
         };
       }
 
-    rentTransponder = (event) => {
+    rentTransponder(event)  {
         event.preventDefault()
 
         this.props.rentTransponder(this.state)

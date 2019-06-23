@@ -1,18 +1,24 @@
 import React from 'react';
+import thunk from 'redux-thunk'
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+// import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import manageRentals from './reducers/manageRentals';
 
 // let store = createStore(manageRentals);
 
-const store = createStore(
-  manageRentals,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+// const store = createStore(
+//   manageRentals,
+//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// );
+
+// var ReduxThunk = window.ReduxThunk.default
+
+const store = createStore(manageRentals, applyMiddleware(thunk));
 
 
 ReactDOM.render(
@@ -26,5 +32,6 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+// registerServiceWorker();
 
 

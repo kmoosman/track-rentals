@@ -1,12 +1,6 @@
 export default function manageRentals(
   state = {
-    events: [{name: "USGP Round 1", date: "April 24th, 2019", location: "Austin, TX", 
-            transponders: [{number: 1, rented: true, rented_by: "John Williams" },
-                          {number: 2, rented: false, rented_by: ""}] },
-    {name: "USGP Round 2", date: "June 26th, 2019", location: "Tooele, UT", 
-    transponders: [{number: 1, rented: true, rented_by: "John Williams"},
-                  {number: 2, rented: false, rented_by: ""}]}
-            ],
+    events: [],
     loading: false
   },
   action
@@ -25,7 +19,13 @@ export default function manageRentals(
       }
       return { ...state, events: [...state.events, event]}
 
- 
+
+  case 'LOADING_EVENTS':
+      return state
+
+  case 'FETCH_EVENTS':
+  return { ...state, loading: false, events: action.payload }
+
   case 'RETURN_TRANSPONDER':
       function updateTransponderArray(array, action) {
         return array.map((item, index) => {
@@ -103,4 +103,11 @@ export default function manageRentals(
   
 }
 
-  
+// events: [{name: "USGP Round 1", date: "April 24th, 2019", location: "Austin, TX", 
+// transponders: [{number: 1, rented: true, rented_by: "John Williams" },
+//               {number: 2, rented: false, rented_by: ""}] },
+// {name: "USGP Round 2", date: "June 26th, 2019", location: "Tooele, UT", 
+// transponders: [{number: 1, rented: true, rented_by: "John Williams"},
+//       {number: 2, rented: false, rented_by: ""}]}
+// ],
+// loading: false
