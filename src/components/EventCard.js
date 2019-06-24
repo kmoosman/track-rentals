@@ -7,7 +7,7 @@ class EventCard extends Component {
 
 
   render() {
-    const eventID = this.props.match.params.key 
+    const eventID = window.location.href.substr(window.location.href.length -1)
     const event = this.props.events[eventID - 1]
     
     return(
