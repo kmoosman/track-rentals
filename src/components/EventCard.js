@@ -5,7 +5,6 @@ import TransponderContainer from './TransponderContainer';
 
 class EventCard extends Component {
 
-    
 
   render() {
     const eventID = this.props.match.params.key 
