@@ -32,75 +32,44 @@ export default function manageRentals(
   case 'FETCH_EVENTS':
   return { ...state, loading: false, events: action.payload }
 
-  case 'RETURN_TRANSPONDER':
-      function updateTransponderArray(array, action) {
-        return array.map((item, index) => {
-          if (index !== action.transponder.number - 1 ) {
-            return item
-          } else {
-            return {
-              number: action.transponder.number, rented: false, rented_by: "",
-              ...action.item
-              }
-            }
-          })
-        }
-
-      function updateEventsArray(array, action) {
-          return array.map((item, index) => {
-            if (index !== action.transponder.eventID) {
-              // This isn't the item we care about - keep it as-is
-              console.log(item )
-              return item
-            } else {
-              return {...item,
-                      transponders: updatedArray}
-            }
-         })
-       }   
-     
-      const updatedArray = updateTransponderArray(state.events[action.transponder.eventID].transponders, action)
-      const updateEvents = updateEventsArray(state.events, action)
-   
-    return { ...state, 
-      events:
-      updateEvents,
-        }  
-                
+  case 'RETURNED_TRANSPONDER':
+    return { ...state, events:[...state.events, action.event]}  
+           
   case 'RENT_TRANSPONDER':
         console.log(action)
-    const rentalUpdates = updateTransonderRental(state.events[action.transponder.eventID].transponders, action)
-    const eventUpdates = updatedEventsArray(state.events, action)
+    // const rentalUpdates = updateTransonderRental(state.events[action.transponder.eventID].transponders, action)
+    // const eventUpdates = updatedEventsArray(state.events, action)
   
-      function updateTransonderRental(array, action) {
-        return array.map((item, index) => {
-          if (index !== action.transponder.number - 1 ) {
-            return item
-          } else {
-            return {
-              number: action.transponder.number, rented: true, rented_by: action.transponder.rented_by,
-              ...action.item
-              }
-            }
-          })
-        }
+    //   function updateTransonderRental(array, action) {
+    //     return array.map((item, index) => {
+    //       if (index !== action.transponder.number - 1 ) {
+    //         return item
+    //       } else {
+    //         return {
+    //           number: action.transponder.number, rented: true, rented_by: action.transponder.rented_by,
+    //           ...action.item
+    //           }
+    //         }
+    //       })
+    //     }
 
-      function updatedEventsArray(array, action) {
-          return array.map((item, index) => {
-            if (index !== action.transponder.eventID) {
-              // This isn't the item we care about - keep it as-is
-              console.log(item )
-              return item
-            } else {
-              return {...item,
-                      transponders: rentalUpdates}
-            }
-          })
-        }   
-        return { ...state, 
-          events:
-          eventUpdates,
-            }  
+    //   function updatedEventsArray(array, action) {
+    //       return array.map((item, index) => {
+    //         if (index !== action.transponder.eventID) {
+    //           // This isn't the item we care about - keep it as-is
+    //           console.log(item )
+    //           return item
+    //         } else {
+    //           return {...item,
+    //                   transponders: rentalUpdates}
+    //         }
+    //       })
+    //     }   
+        // return { ...state, 
+        //   events:
+        //   eventUpdates,
+        //     }  
+        return state
 
      //enter new case here   
     default:
@@ -109,11 +78,39 @@ export default function manageRentals(
   
 }
 
-// events: [{name: "USGP Round 1", date: "April 24th, 2019", location: "Austin, TX", 
-// transponders: [{number: 1, rented: true, rented_by: "John Williams" },
-//               {number: 2, rented: false, rented_by: ""}] },
-// {name: "USGP Round 2", date: "June 26th, 2019", location: "Tooele, UT", 
-// transponders: [{number: 1, rented: true, rented_by: "John Williams"},
-//       {number: 2, rented: false, rented_by: ""}]}
-// ],
-// loading: false
+
+//keep this just in case, but it's no longer needed 
+ // console.log(action)
+  //     function updateTransponderArray(array, action) {
+  //       return array.map((item, index) => {
+  //         if (index !== action.transponder.number - 1 ) {
+  //           return item
+  //         } else {
+  //           return {
+  //             number: action.transponder.number, rented: false, rented_by: "",
+  //             ...action.item
+  //             }
+  //           }
+  //         })
+  //       }
+
+  //     function updateEventsArray(array, action) {
+  //         return array.map((item, index) => {
+  //           if (index !== action.transponder.eventID) {
+  //             // This isn't the item we care about - keep it as-is
+  //             console.log(item )
+  //             return item
+  //           } else {
+  //             return {...item,
+  //                     transponders: updatedArray}
+  //           }
+  //        })
+  //      }   
+     
+  //     const updatedArray = updateTransponderArray(state.events[action.transponder.eventID].transponders, action)
+  //     const updateEvents = updateEventsArray(state.events, action)
+   
+  // return { ...state, 
+  //   events:
+  //   [...state.events, action.event]
+  //     } 

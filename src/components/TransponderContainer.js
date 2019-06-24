@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Card, Badge } from "react-bootstrap";
 import RentalInput from "./RentalInput"
 import RentalName from "./RentalName"
+import { returnTransponder } from '../actions/transponderActions'
 
 class TransponderContainer extends Component {
     
@@ -63,7 +64,8 @@ const badge = {
 }
 
 const mapDispatchToProps = dispatch => ({
-    returnTransponder: transponder => dispatch({ type: 'RETURN_TRANSPONDER', transponder: transponder }),
+    // returnTransponder: transponder => dispatch({ type: 'RETURN_TRANSPONDER', transponder: transponder }),
+    returnTransponder: transponder => dispatch(returnTransponder(transponder)),
     rentTransponder: transponder => dispatch({ type: 'RENT_TRANSPONDER', transponder: transponder }),
 })
 

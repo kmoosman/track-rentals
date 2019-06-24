@@ -7,8 +7,8 @@ class EventCard extends Component {
     
 
   render() {
-    const eventID = this.props.match.params.key - 1
-    const event = this.props.events[eventID]
+    const eventID = this.props.match.params.key 
+    const event = this.props.events[eventID - 1]
     
     return(
         

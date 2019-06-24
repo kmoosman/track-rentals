@@ -18,7 +18,7 @@ import manageRentals from './reducers/manageRentals';
 
 // var ReduxThunk = window.ReduxThunk.default
 
-const store = createStore(manageRentals, applyMiddleware(thunk));
+const store = createStore(manageRentals,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(thunk));
 
 
 ReactDOM.render(

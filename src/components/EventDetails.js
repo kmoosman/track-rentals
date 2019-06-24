@@ -49,4 +49,4 @@ const mapStateToProps = (state) => {
 
 
   
-   export default connect(mapStateToProps)(EventDetails);
+export default connect(mapStateToProps)(EventDetails);
