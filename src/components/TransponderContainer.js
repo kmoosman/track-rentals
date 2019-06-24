@@ -3,35 +3,36 @@ import { connect } from 'react-redux'
 import { Card, Badge } from "react-bootstrap";
 import RentalInput from "./RentalInput"
 import RentalName from "./RentalName"
-import { returnTransponder } from '../actions/transponderActions'
+import { returnTransponder, rentTransponder } from '../actions/transponderActions'
 
 class TransponderContainer extends Component {
     
   render(props) {
-      const event = this.props.events[this.props.eventID - 1]
-      const transponder = event.transponders[this.props.number -1]
+    //   const event = this.props.events[this.props.eventID]
+    //   const transponder = event.transponders[this.props]
 
+    //   console.log(event)
       
 
-    const badgeColor = (transponder.rented === false) ? 'success' : 'danger'
+    const badgeColor = (this.props.rented === false) ? 'success' : 'danger'
     
-    const rented = transponder.rented
+    const rented = this.props.rented
     let input
     let status
     let styling
 
     if (!rented) {
-        input = <RentalInput transponder={transponder} rentTransponder={this.props.rentTransponder} /> ;
+        input = <RentalInput transponder={this.props} rentTransponder={this.props.rentTransponder} /> ;
         status = "Available"
         styling = success
       } else {
-        input = <RentalName  transponder={transponder} returnTransponder={this.props.returnTransponder} />;
+        input = <RentalName  transponder={this.props} returnTransponder={this.props.returnTransponder} />;
         status = "Rented"
         styling = danger
       }
     return(
         <Card style={eventCard}>
-            <Card.Header as="h5">Transponder {transponder.number} 
+            <Card.Header as="h5">Transponder {this.props.number} 
                 <Badge pill style={badge} variant={badgeColor}>
                     {status}
                 </Badge>
@@ -67,14 +68,14 @@ const badge = {
     float: 'right'
 }
 
-const mapStateToProps = (state) => {
-    return { events: state.events, transponders: state.events.transponders};
-  };
+// const mapStateToProps = (state) => {
+//     return { events: state.events };
+//   };
 
 const mapDispatchToProps = dispatch => ({
     // returnTransponder: transponder => dispatch({ type: 'RETURN_TRANSPONDER', transponder: transponder }),
     returnTransponder: transponder => dispatch(returnTransponder(transponder)),
-    rentTransponder: transponder => dispatch({ type: 'RENT_TRANSPONDER', transponder: transponder }),
+    rentTransponder: transponder => dispatch(rentTransponder(transponder)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(TransponderContainer);
+export default connect(null, mapDispatchToProps)(TransponderContainer);

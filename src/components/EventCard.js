@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import TransponderContainer from './TransponderContainer';
 
 class EventCard extends Component {
+
     
 
   render() {

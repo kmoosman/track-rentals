@@ -9,7 +9,7 @@ class RentalInput extends Component {
           number: "",
           rented: true,
           rented_by: "",
-          eventID: ""
+          event_id: ""
         };
       }
 
@@ -24,7 +24,7 @@ class RentalInput extends Component {
         this.setState({
           number: this.props.transponder.number,
           rented_by: event.target.value,
-          eventID: this.props.transponder.eventID
+          event_id: this.props.transponder.eventID
         });
         
       }

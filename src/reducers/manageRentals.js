@@ -35,7 +35,6 @@ export default function manageRentals(
 
 
   case 'RETURNED_TRANSPONDER':
-  console.log("I am soooo ffffffing frustrated")
     console.log(state.events[action.transponder.event_id - 1].transponders)
       function updateTransponderArray(array, action) {
         return array.map((item, index) => {
@@ -73,39 +72,38 @@ export default function manageRentals(
 
   case 'RENT_TRANSPONDER':
         console.log(action)
-    // const rentalUpdates = updateTransonderRental(state.events[action.transponder.eventID].transponders, action)
-    // const eventUpdates = updatedEventsArray(state.events, action)
+    const rentalUpdates = updateTransonderRental(state.events[action.transponder.event_id - 1].transponders, action)
+    const eventUpdates = updatedEventsArray(state.events, action)
   
-    //   function updateTransonderRental(array, action) {
-    //     return array.map((item, index) => {
-    //       if (index !== action.transponder.number - 1 ) {
-    //         return item
-    //       } else {
-    //         return {
-    //           number: action.transponder.number, rented: true, rented_by: action.transponder.rented_by,
-    //           ...action.item
-    //           }
-    //         }
-    //       })
-    //     }
+      function updateTransonderRental(array, action) {
+        return array.map((item, index) => {
+          if (index !== action.transponder.number - 1 ) {
+            return item
+          } else {
+            return {
+              number: action.transponder.number, rented: true, rented_by: action.transponder.rented_by,
+              ...action.item
+              }
+            }
+          })
+        }
 
-    //   function updatedEventsArray(array, action) {
-    //       return array.map((item, index) => {
-    //         if (index !== action.transponder.eventID) {
-    //           // This isn't the item we care about - keep it as-is
-    //           console.log(item )
-    //           return item
-    //         } else {
-    //           return {...item,
-    //                   transponders: rentalUpdates}
-    //         }
-    //       })
-    //     }   
-        // return { ...state, 
-        //   events:
-        //   eventUpdates,
-        //     }  
-        return state
+      function updatedEventsArray(array, action) {
+          return array.map((item, index) => {
+            if (index !== action.transponder.event_id - 1) {
+              // This isn't the item we care about - keep it as-is
+              console.log(item )
+              return item
+            } else {
+              return {...item,
+                      transponders: rentalUpdates}
+            }
+          })
+        }   
+        return { ...state, 
+          events:
+          eventUpdates,
+            }  
 
      //enter new case here   
     default:
