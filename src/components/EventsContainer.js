@@ -10,7 +10,7 @@ class EventsContainer extends Component {
   componentDidMount() {
     this.props.fetchEvents()
   }
-  renderEvents = () => this.props.events.map((event, id) => <EventDetails id={id + 1} name={event.name}  date={event.date} location={event.location} />)
+  renderEvents = () => this.props.events.map((event, id) => <EventDetails key={id} id={id + 1} name={event.name}  date={event.date} location={event.location} />)
   
   
   render() {
@@ -30,6 +30,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
   fetchEvents: () => dispatch(fetchEvents()),
+  
 
 })
 

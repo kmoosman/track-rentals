@@ -11,25 +11,22 @@ class EventDetails extends Component {
 
     
     return(
-    <div style={eventCard}>
-        <Card >
+    // <div >
+        <Card style={eventCard} >
             <Card.Header as="h5">{this.props.name}</Card.Header>
             <Card.Body>
                 <Card.Title>{this.props.date}</Card.Title>
-                <Card.Text>
-               <div style={buttonStyle}>
+                <Card.Text style={buttonStyle}>
                {this.props.location}
-               </div>
-               <div style={buttonStyle}>
+               <br/>
                 <Link to={`/events/${this.props.id}`} >
-                 <Button variant="primary">Rentals</Button>
-                </Link>
-               </div>
+                 <Button variant="primary" style={buttonStyle}>Rentals</Button>
+                </Link> 
                 </Card.Text>
                
             </Card.Body>
         </Card>
-    </div>
+    // </div>
                 
     );
   }

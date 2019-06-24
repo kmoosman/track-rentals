@@ -6,19 +6,25 @@ export default function manageRentals(
   action
 ) {
   switch (action.type) {
-    
-    case 'ADD_EVENT':
-      var options = { year: 'numeric', month: 'long', day: 'numeric' };
-      var dateString = action.newEvent.date; 
-      var dateObject = new Date(dateString);
+    // case 'ADD_EVENT':
+    //   var options = { year: 'numeric', month: 'long', day: 'numeric' };
+    //   var dateString = action.newEvent.date; 
+    //   var dateObject = new Date(dateString);
 
-      const event = {
-        name: action.newEvent.name,
-        date: dateObject.toLocaleDateString("en-US", options),
-        location: action.newEvent.location
-      }
-      return { ...state, events: [...state.events, event]}
+    //   const event = {
+    //     name: action.newEvent.name,
+    //     date: dateObject.toLocaleDateString("en-US", options),
+    //     location: action.newEvent.location
+    //   }
+    //   return { ...state, events: [...state.events, event]}
+      
+  case 'ADDED_EVENT':
+  const newEvent = { name: action.name, date: action.date, location: action.location };
 
+  return { ...state, events: [...state.events, newEvent]}
+
+  case 'ADDING_EVENT':
+  return { ...state, adding: true }
 
   case 'LOADING_EVENTS':
       return state

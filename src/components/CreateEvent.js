@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Form, Button } from "react-bootstrap";
+import { addEvent } from '../actions/eventActions'
 
 class CreateEvent extends Component {
 
@@ -62,7 +63,8 @@ class CreateEvent extends Component {
 };
 
 const mapDispatchToProps = dispatch => ({
-  addEvent: formData => dispatch({ type: 'ADD_EVENT', newEvent: formData }),
+  // addEvent: formData => dispatch({ type: 'ADD_EVENT', newEvent: formData }),
+  addEvent: formData => dispatch(addEvent(formData))
 })
 
 export default connect(null, mapDispatchToProps)(CreateEvent);
