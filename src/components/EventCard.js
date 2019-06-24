@@ -19,7 +19,6 @@ class EventCard extends Component {
                 <Card.Text>
                 
                 </Card.Text>
-                {/* {console.log(event.transponders)} */}
                 {event.transponders.map((transponder, id) => <TransponderContainer key={id} number={transponder.number} eventID={eventID} rented={transponder.rented} rented_by={transponder.rented_by} event={event} />)}
                
             </Card.Body>

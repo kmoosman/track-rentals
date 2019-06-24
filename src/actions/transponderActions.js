@@ -36,10 +36,10 @@ export function returnTransponder(transponder) {
               number: transponder.number,
               rented: transponder.rented,
               rented_by: transponder.rented_by,
-              event_id: transponder.eventID
+              event_id: transponder.event_id
             }
         
-            fetch('http://localhost:3001/api/events/' + transponder.eventID, {
+            fetch('http://localhost:3001/api/events/' + transponder.event_id, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(updatedTransponder)
@@ -50,7 +50,7 @@ export function returnTransponder(transponder) {
         
                 dispatch({
                 type: "RETURNED_TRANSPONDER",
-                event: JSON
+                transponder: JSON
 
               })
             });

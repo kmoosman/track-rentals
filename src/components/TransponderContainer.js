@@ -8,26 +8,30 @@ import { returnTransponder } from '../actions/transponderActions'
 class TransponderContainer extends Component {
     
   render(props) {
+      const event = this.props.events[this.props.eventID - 1]
+      const transponder = event.transponders[this.props.number -1]
 
-    const badgeColor = (this.props.rented === false) ? 'success' : 'danger'
+      
+
+    const badgeColor = (transponder.rented === false) ? 'success' : 'danger'
     
-    const rented = this.props.rented
+    const rented = transponder.rented
     let input
     let status
     let styling
 
     if (!rented) {
-        input = <RentalInput transponder={this.props} rentTransponder={this.props.rentTransponder} /> ;
+        input = <RentalInput transponder={transponder} rentTransponder={this.props.rentTransponder} /> ;
         status = "Available"
         styling = success
       } else {
-        input = <RentalName  transponder={this.props} returnTransponder={this.props.returnTransponder} />;
+        input = <RentalName  transponder={transponder} returnTransponder={this.props.returnTransponder} />;
         status = "Rented"
         styling = danger
       }
     return(
         <Card style={eventCard}>
-            <Card.Header as="h5">Transponder {this.props.number} 
+            <Card.Header as="h5">Transponder {transponder.number} 
                 <Badge pill style={badge} variant={badgeColor}>
                     {status}
                 </Badge>
@@ -63,10 +67,14 @@ const badge = {
     float: 'right'
 }
 
+const mapStateToProps = (state) => {
+    return { events: state.events, transponders: state.events.transponders};
+  };
+
 const mapDispatchToProps = dispatch => ({
     // returnTransponder: transponder => dispatch({ type: 'RETURN_TRANSPONDER', transponder: transponder }),
     returnTransponder: transponder => dispatch(returnTransponder(transponder)),
     rentTransponder: transponder => dispatch({ type: 'RENT_TRANSPONDER', transponder: transponder }),
 })
 
-export default connect(null, mapDispatchToProps)(TransponderContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(TransponderContainer);

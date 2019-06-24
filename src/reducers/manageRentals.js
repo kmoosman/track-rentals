@@ -32,9 +32,45 @@ export default function manageRentals(
   case 'FETCH_EVENTS':
   return { ...state, loading: false, events: action.payload }
 
+
+
   case 'RETURNED_TRANSPONDER':
-    return { ...state, events:[...state.events, action.event]}  
-           
+  console.log("I am soooo ffffffing frustrated")
+    console.log(state.events[action.transponder.event_id - 1].transponders)
+      function updateTransponderArray(array, action) {
+        return array.map((item, index) => {
+          if (index !== action.transponder.number - 1 ) {
+            return item
+          } else {
+            return {
+              number: action.transponder.number, rented: false, rented_by: "",
+              ...action.item
+              }
+            }
+          })
+        }
+
+      function updateEventsArray(array, action) {
+          return array.map((item, index) => {
+            if (index !== action.transponder.event_id - 1) {
+              // This isn't the item we care about - keep it as-is
+              console.log(item )
+              return item
+            } else {
+              return {...item,
+                      transponders: updatedArray}
+            }
+         })
+       }   
+     
+      const updatedArray = updateTransponderArray(state.events[action.transponder.event_id - 1].transponders, action)
+      const updateEvents = updateEventsArray(state.events, action)
+   
+  return { ...state, 
+    events:
+    updateEvents
+      } 
+
   case 'RENT_TRANSPONDER':
         console.log(action)
     // const rentalUpdates = updateTransonderRental(state.events[action.transponder.eventID].transponders, action)
