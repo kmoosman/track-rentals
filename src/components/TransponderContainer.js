@@ -8,12 +8,7 @@ import { returnTransponder, rentTransponder } from '../actions/transponderAction
 class TransponderContainer extends Component {
     
   render(props) {
-    //   const event = this.props.events[this.props.eventID]
-    //   const transponder = event.transponders[this.props]
-
-    //   console.log(event)
-      
-
+   
     const badgeColor = (this.props.rented === false) ? 'success' : 'danger'
     
     const rented = this.props.rented

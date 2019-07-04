@@ -3,15 +3,15 @@ import { Card } from "react-bootstrap";
 import { connect } from 'react-redux';
 import TransponderContainer from './TransponderContainer';
 
-class EventCard extends Component {
+class EventCardContainer extends Component {
 
 
-  render() {
-    const eventID = window.location.href.substr(window.location.href.length -1)
+
+  render(props) {
+    const eventID = this.props.match.params.key
     const event = this.props.events[eventID - 1]
-    
+
     return(
-        
         <Card style={eventCard}>
             <Card.Header as="h5">{event.name}</Card.Header>
             <Card.Body>
@@ -43,5 +43,5 @@ const mapStateToProps = (state) => {
   };
   
   
-export default connect(mapStateToProps)(EventCard);
+export default connect(mapStateToProps)(EventCardContainer);
   

@@ -15,9 +15,7 @@ class RentalInput extends Component {
 
     rentTransponder(event)  {
         event.preventDefault()
-
         this.props.rentTransponder(this.state)
-        
     }
 
     handleChange(event) {
@@ -67,4 +65,4 @@ const lableCol = {
 //     addRentalName: transponder => dispatch({ type: 'RENT_TRANSPONDER', transponder: transponder }),
 //   })
   
-  export default (RentalInput);
+export default (RentalInput);

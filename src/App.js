@@ -8,7 +8,7 @@ import Nav from './components/Nav';
 import CreateEvent from './components/CreateEvent';
 import Home from './components/Home';
 import EventsContainer from './components/EventsContainer';
-import EventCard from './components/EventCard';
+import EventCardContainer from './components/EventCardContainer';
 
 
 class App extends Component {
@@ -25,7 +25,7 @@ class App extends Component {
             <Route exact path='/' component={Home} />
             <Route exact path='/events' component={EventsContainer} />
             <Route exact path='/events/new' component={CreateEvent} />
-            <Route exact path='/events/:key' component={EventCard} />
+            <Route exact path='/events/:key' component={EventCardContainer} />
   
           
           </Switch>
