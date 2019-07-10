@@ -26,9 +26,11 @@ class CreateEvent extends Component {
 
   handleSubmit(event){
     event.preventDefault()
-    console.log(this.state.formValues);
+    //console.log(this.state.formValues);
+    console.log('A');
     this.props.addEvent(this.state.formValues)
-    let path = `/events`;
+    console.log('B');
+   let path = `/events`;
     this.props.history.push(path);
  
     // return  <Redirect to='/events' />

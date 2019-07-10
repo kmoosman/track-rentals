@@ -14,6 +14,7 @@ export function fetchEvents() {
 }
 
 export function addEvent(state) {
+  console.log('C');
   return dispatch => {
     dispatch({ type: 'ADDING_EVENT' });
       var options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -33,7 +34,7 @@ export function addEvent(state) {
       })
         .then(response => response.json())
         .then(eventJSON => {
-  
+          console.log('D');
           dispatch({
           type: "ADDED_EVENT",
           name: eventJSON.name,
@@ -42,6 +43,6 @@ export function addEvent(state) {
         })
       });
     }
-
+    console.log('E');
     
   }

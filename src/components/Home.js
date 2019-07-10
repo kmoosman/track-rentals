@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Carousel, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
+import AddComment from './AddComment'
 
 class Home extends Component {
   
@@ -27,8 +28,9 @@ class Home extends Component {
               <Link to={`/events`} >
                  <Button style={cta} variant="primary" onClick={ () => console.log('you clicked to return') }>Rent Now</Button>
               </Link>
-              
+              <AddComment/>
           </div>
+          
         </header>
       </div>
     );
